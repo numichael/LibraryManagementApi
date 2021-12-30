@@ -88,6 +88,12 @@ namespace AspNetWebApi
                 endpoints.MapControllers();
             });
         }
+
+        private static void MigrateDatabaseContexts(IServiceProvider svp)
+        {
+            var applicationDbContext = svp.GetRequiredService<AppDbContext>();
+            applicationDbContext.Database.Migrate();
+        }
     }
 
     internal class DbContext

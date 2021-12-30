@@ -87,9 +87,11 @@ namespace AspNetWebApi
             {
                 endpoints.MapControllers();
             });
-        }
 
-        private static void MigrateDatabaseContexts(IServiceProvider svp)
+            //MigrateDatabaseContexts(svp);
+            //CreateDefaultRoleAndUsersAsync(svp).GetAwaiter().GetResult();
+        }
+        public void MigrateDatabaseContexts(IServiceProvider svp)
         {
             var applicationDbContext = svp.GetRequiredService<AppDbContext>();
             applicationDbContext.Database.Migrate();

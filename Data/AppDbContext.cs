@@ -5,15 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetWebApi.Data
 {
-    public class AppDbContext : IdentityDbContext<ApplicationUser>
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
 
-        public DbSet<Author> Authors { get; set;} 
+        public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
 
     }
